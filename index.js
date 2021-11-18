@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = 8000; //port 80 is for production/deployment
 const expressLayouts = require('express-ejs-layouts');
+const db = require('./config/mongoose');
 
 app.use(express.static('./public')); //use static files
 app.use(expressLayouts); //use layout for rendering views
