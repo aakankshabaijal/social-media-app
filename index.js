@@ -1,6 +1,14 @@
 const express = require('express');
 const app = express();
 const port = 8000; //port 80 is for production/deployment
+const expressLayouts = require('express-ejs-layouts');
+
+app.use(express.static('./public')); //use static files
+app.use(expressLayouts); //use layout for rendering views
+
+//extract style and script from sub-pages into the layout
+app.set('layout extractStyles', true);
+app.set('layout extractScripts', true);
 
 //setting up the view engine
 app.set('view engine', 'ejs');
