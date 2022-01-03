@@ -50,6 +50,30 @@ const create = (req, res) => {
 	});
 };
 
-const createSession = (req, res) => {};
+const createSession = (req, res) => {
+	/** STEPS TO AUTHENTICATE
+	 * 
+	 *  check if the user exists in the DB
+	 * 	if user is found, check if password is correct
+	 * 	if password is correct, create a session and store in cookies
+	 * 	if password is incorrect, redirect to sign in page
+	 * 	if user is not found, redirect to sign up page
+	 */
+
+	User.findOne({ email: req.body.email }, (err, user) => {
+		if (err) {
+			console.log('error in finding user while signing in');
+			return;
+		}
+		if (!user) {
+			return res.redirect('back');
+		}
+		if (user.password !== req.body.password) {
+			return res.redirect('back');
+		}
+		res.cookie('user_id', user._id.toString());
+		return res.redirect('/users/profile');
+	});
+};
 
 module.exports = { profile, signUp, signIn, create, createSession };
