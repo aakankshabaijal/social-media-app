@@ -1,11 +1,23 @@
 const User = require('../models/user');
 
 const profile = (req, res) => {
-	// res.send('<h1>Profile page of User</h1>');
-	res.render('users', {
-		title     : 'Profile',
-		firstName : 'Aakanksha',
-		lastName  : 'Baijal'
+	//user can access the profile page only if they are signed in
+	//if req.cookie contains the user_id then the user is signed in
+	if (!req.cookies.user_id) {
+		return res.redirect('/users/sign-in');
+	}
+	User.findById(req.cookies.user_id, (err, user) => {
+		if (err) {
+			console.log('error in finding user while accessing profile');
+			return;
+		}
+		if (!user) {
+			return res.redirect('/users/sign-in');
+		}
+		res.render('user_profile', {
+			title : 'Instacode | Profile',
+			user  : user
+		});
 	});
 };
 
@@ -76,4 +88,9 @@ const createSession = (req, res) => {
 	});
 };
 
-module.exports = { profile, signUp, signIn, create, createSession };
+const signOut = (req, res) => {
+	res.clearCookie('user_id');
+	res.redirect('/users/sign-in');
+};
+
+module.exports = { profile, signUp, signIn, create, createSession, signOut };
