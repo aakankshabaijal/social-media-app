@@ -4,6 +4,10 @@ const port = 8000; //port 80 is for production/deployment
 const expressLayouts = require('express-ejs-layouts');
 const db = require('./config/mongoose');
 const cookieParser = require('cookie-parser');
+const session = require('express-session'); //used for session cookie
+const passport = require('passport');
+const passportLocal = require('./config/passport-local-strategy');
+const MongoStore = require('connect-mongo'); //used for storing the session cookie in the db
 
 app.use(express.urlencoded());
 app.use(cookieParser());
@@ -18,6 +22,26 @@ app.set('layout extractScripts', true);
 //setting up the view engine
 app.set('view engine', 'ejs');
 app.set('views', './views');
+
+//middleware that takes in our session cookie and encrypts it
+app.use(
+	session({
+		name              : 'instacode',
+		secret            : 'blahsomething', //change the secret before deployment
+		saveUninitialized : true,
+		resave            : false,
+		cookie            : {
+			maxAge : 1000 * 60 * 100 //in milliseconds
+		},
+		store             : MongoStore.create({
+			mongoUrl : 'mongodb://localhost/instacode'
+		})
+	})
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(passport.setAuthenticatedUser);
 
 //for using express router
 app.use('/', require('./routes/index'));

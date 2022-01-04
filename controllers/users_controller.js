@@ -10,12 +10,19 @@ const profile = (req, res) => {
 };
 
 const signUp = (req, res) => {
+	if (req.isAuthenticated()) {
+		return res.redirect('/users/profile');
+	}
+
 	res.render('user_sign_up', {
 		title : 'Instacode | Sign Up'
 	});
 };
 
 const signIn = (req, res) => {
+	if (req.isAuthenticated()) {
+		return res.redirect('/users/profile');
+	}
 	res.render('user_sign_in', {
 		title : 'Instacode | Sign In'
 	});
@@ -50,6 +57,13 @@ const create = (req, res) => {
 	});
 };
 
-const createSession = (req, res) => {};
+const createSession = (req, res) => {
+	return res.redirect('/');
+};
 
-module.exports = { profile, signUp, signIn, create, createSession };
+const signOut = (req, res) => {
+	req.logout(); //inbuilt using passport
+	return res.redirect('/');
+};
+
+module.exports = { profile, signUp, signIn, create, createSession, signOut };
