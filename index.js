@@ -47,6 +47,8 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+//if the user is signed in, then it is stored in the session cookie
 app.use(passport.setAuthenticatedUser);
 
 //for using express router
