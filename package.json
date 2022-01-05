@@ -5,12 +5,10 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "nodemon index.js",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"compile-sass": "sass --watch public/scss:public/css"
 	},
-	"keywords": [
-		"social",
-		"media"
-	],
+	"keywords": [ "social", "media" ],
 	"author": "Aakanksha Baijal",
 	"license": "ISC",
 	"dependencies": {
@@ -22,7 +20,9 @@
 		"express-ejs-layouts": "^2.5.1",
 		"express-session": "^1.17.2",
 		"mongoose": "^6.0.13",
+		"node-sass": "^7.0.1",
 		"passport": "^0.5.2",
-		"passport-local": "^1.0.0"
+		"passport-local": "^1.0.0",
+		"sass": "^1.45.2"
 	}
 }
