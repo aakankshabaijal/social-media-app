@@ -1,5 +1,8 @@
+@import './_variables.scss';
+
 body {
+	@include fontFamily();
 	margin: 0;
 	padding: 0;
-	background-color: olive;
+	background-color: whitesmoke;
 }

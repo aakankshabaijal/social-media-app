@@ -1,3 +1,6 @@
+$darkBg: rgb(19, 8, 49);
+$lightBg: whitesmoke;
+
 @mixin fontFamily {
 	font-family: 'Work Sans', sans-serif;
 }
@@ -14,4 +17,26 @@
 	flex-wrap: nowrap;
 	justify-content: $justifyContent;
 	align-items: $alignItems;
+}
+
+@mixin navLinks {
+	ul {
+		@include createFlexbox(row, space-between, center);
+		justify-content: flex-end;
+		padding-right: 1em;
+		li {
+			@include centerComponent();
+			list-style: none;
+			a {
+				color: rgb(49, 30, 83)0;
+				text-decoration: none;
+				font-size: 1.5rem;
+				font-weight: 400;
+				padding: 0.5rem;
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
 }

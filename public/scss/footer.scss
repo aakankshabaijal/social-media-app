@@ -1,3 +1,22 @@
+@import './variables';
+
 footer {
-	background-color: gray;
+	position: fixed;
+	bottom: 0;
+	background-color: $darkBg;
+	color: $lightBg;
+	height: 10vh;
+	width: 100vw;
+	@include createFlexbox(row, space-between, center);
+
+	p {
+		padding-left: 2em;
+	}
+
+	a {
+		color: $lightBg;
+		text-decoration: none;
+	}
+
+	@include navLinks();
 }

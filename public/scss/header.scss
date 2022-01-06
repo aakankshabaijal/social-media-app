@@ -10,26 +10,9 @@ header {
 
 	h1 {
 		justify-content: flex-start;
-		color: whitesmoke;
+		color: $lightBg;
 		padding-left: 1em;
 	}
-	ul {
-		@include createFlexbox(row, space-between, center);
-		justify-content: flex-end;
-		padding-right: 1em;
-		li {
-			@include centerComponent();
-			list-style: none;
-			a {
-				color: rgb(49, 30, 83)0;
-				text-decoration: none;
-				font-size: 1.5rem;
-				font-weight: 400;
-				padding: 0.5rem;
-				&:hover {
-					text-decoration: underline;
-				}
-			}
-		}
-	}
+
+	@include navLinks();
 }
