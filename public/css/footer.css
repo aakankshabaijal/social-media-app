@@ -1,10 +1,8 @@
 footer {
-  position: fixed;
-  bottom: 0;
+  margin-top: 3em;
   background-color: #130831;
   color: whitesmoke;
   height: 10vh;
-  width: 100vw;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;

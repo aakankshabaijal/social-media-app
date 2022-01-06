@@ -1,12 +1,12 @@
 @import './variables';
 
 footer {
-	position: fixed;
-	bottom: 0;
+	margin-top: 3em;
+
 	background-color: $darkBg;
 	color: $lightBg;
 	height: 10vh;
-	width: 100vw;
+
 	@include createFlexbox(row, space-between, center);
 
 	p {
