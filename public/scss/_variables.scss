@@ -1,0 +1,17 @@
+@mixin fontFamily {
+	font-family: 'Work Sans', sans-serif;
+}
+
+@mixin centerComponent {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin createFlexbox($direction, $justifyContent, $alignItems) {
+	display: flex;
+	flex-direction: $direction;
+	flex-wrap: nowrap;
+	justify-content: $justifyContent;
+	align-items: $alignItems;
+}
