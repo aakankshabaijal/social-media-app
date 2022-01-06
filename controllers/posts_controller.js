@@ -1,11 +1,20 @@
-const userPost = (req, res) => {
-	//res.send('<h1>Here are the posts</h1>');
-	res.render('posts', {
-		title    : 'Feed',
-		userName : 'aakanksha_baijal',
-		likes    : '10',
-		comments : '5'
-	});
+const Post = require('../models/post');
+
+const create = (req, res) => {
+	//store the data sent in request into the database
+	Post.create(
+		{
+			content : req.body.content,
+			user    : req.user._id
+		},
+		(err, post) => {
+			if (err) {
+				console.log('Error in creating a post');
+				return;
+			}
+			return res.redirect('back');
+		}
+	);
 };
 
-module.exports = { userPost };
+module.exports = { create };
