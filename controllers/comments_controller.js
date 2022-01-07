@@ -30,4 +30,29 @@ const create = (req, res) => {
 	});
 };
 
-module.exports = { create };
+const destroy = (req, res) => {
+	Comment.findById(req.params.id, (err, comment) => {
+		if (err) {
+			console.log('Error in deleting a comment');
+			return;
+		}
+		if (!comment) {
+			console.log('Comment not found for deletion');
+			return;
+		}
+		if (comment.user == req.user.id) {
+			let postId = comment.post;
+
+			comment.remove();
+
+			Post.findByIdAndUpdate(postId, { $pull: { comments: req.params.id } }, (err, post) => {
+				return res.redirect('back');
+			});
+		}
+		else {
+			return res.redirect('back');
+		}
+	});
+};
+
+module.exports = { create, destroy };
