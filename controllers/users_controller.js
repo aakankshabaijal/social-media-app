@@ -1,9 +1,35 @@
 const User = require('../models/user');
 
 const profile = (req, res) => {
-	res.render('users', {
-		title : 'Profile'
+	User.findById(req.params.id, (err, user) => {
+		if (err) {
+			console.log('Error in finding user in profile');
+			return;
+		}
+		if (!user) {
+			console.log('User profile not found');
+			return;
+		}
+		return res.render('user_profile', {
+			title        : 'Profile',
+			profile_user : user
+		});
 	});
+};
+
+const update = (req, res) => {
+	if (req.user.id == req.params.id) {
+		User.findByIdAndUpdate(req.params.id, req.body, (err, user) => {
+			if (err) {
+				console.log('Error in updating user');
+				return;
+			}
+			return res.redirect('back');
+		});
+	}
+	else {
+		return res.status(401).send('Unauthorized');
+	}
 };
 
 const signUp = (req, res) => {
@@ -63,4 +89,4 @@ const signOut = (req, res) => {
 	return res.redirect('/');
 };
 
-module.exports = { profile, signUp, signIn, create, createSession, signOut };
+module.exports = { profile, update, signUp, signIn, create, createSession, signOut };

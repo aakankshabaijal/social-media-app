@@ -1,4 +1,5 @@
 const Post = require('../models/post');
+const User = require('../models/user');
 
 module.exports.home = (req, res) => {
 	/**
@@ -18,9 +19,12 @@ module.exports.home = (req, res) => {
 				console.log('Error in fetching posts from db');
 				return;
 			}
-			return res.render('home', {
-				title : 'Instacode | Home',
-				posts : posts
+			User.find({}, (err, users) => {
+				return res.render('home', {
+					title     : 'Instacode | Home',
+					posts     : posts,
+					all_users : users
+				});
 			});
 		});
 };

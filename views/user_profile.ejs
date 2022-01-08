@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="/css/user_profile.css">
+
+
+<h1>Welcome to your Profile Page</h1>
+
+<p>Name : <%= profile_user.name %>
+</p>
+<p>Email : <%=profile_user.email %>
+</p>
+
+<!-- if the user is viewing their own profile page, they can edit their profile -->
+<% if (profile_user.id == user.id) { %>
+
+<h4>Update your Profile</h4>
+<form action="/users/update/<%= user.id %>" method="POST">
+  <label for="name">Name</label>
+  <input type="text" name="name" value="<%= profile_user.name %>" placeholder="Your Name" required>
+  <label for="email">Email</label>
+  <input type="text" name="email" value="<%= profile_user.email %>" placeholder="Your Email ID" required>
+
+  <input type="submit" value="Update">
+  <% } %>
