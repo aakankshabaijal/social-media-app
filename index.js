@@ -9,6 +9,8 @@ const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 const MongoStore = require('connect-mongo'); //used for storing the session cookie in the db
 const sass = require('node-sass');
+const flash = require('connect-flash');
+const flashMiddleware = require('./config/flash-middleware');
 
 /**
  * https://www.youtube.com/watch?v=pGcCWhl6ePQ
@@ -50,6 +52,10 @@ app.use(passport.session());
 
 //if the user is signed in, then it is stored in the session cookie
 app.use(passport.setAuthenticatedUser);
+
+//setting up flash messages
+app.use(flash());
+app.use(flashMiddleware.setFlash);
 
 //for using express router
 app.use('/', require('./routes/index'));

@@ -81,11 +81,13 @@ const create = (req, res) => {
 };
 
 const createSession = (req, res) => {
+	req.flash('success', 'Logged in successfully');
 	return res.redirect('/');
 };
 
 const signOut = (req, res) => {
 	req.logout(); //inbuilt using passport
+	req.flash('success', 'You have logged out');
 	return res.redirect('/');
 };
 

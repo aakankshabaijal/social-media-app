@@ -8,10 +8,14 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"compile-sass": "sass --watch public/scss:public/css"
 	},
-	"keywords": [ "social", "media" ],
+	"keywords": [
+		"social",
+		"media"
+	],
 	"author": "Aakanksha Baijal",
 	"license": "ISC",
 	"dependencies": {
+		"connect-flash": "^0.1.1",
 		"connect-mongo": "^4.6.0",
 		"connect-mongodb-session": "^3.1.1",
 		"cookie-parser": "^1.4.6",
