@@ -20,7 +20,7 @@ const flashMiddleware = require('./config/flash-middleware');
 app.use(express.urlencoded());
 app.use(cookieParser());
 
-app.use(express.static('./public')); //use static files
+app.use(express.static('./public/')); //use static files
 app.use(expressLayouts); //use layout for rendering views
 
 //extract style and script from sub-pages into the layout

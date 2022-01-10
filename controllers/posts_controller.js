@@ -9,6 +9,8 @@ const create = async (req, res) => {
 			user    : req.user._id
 		});
 		if (req.xhr) {
+			// if we want to populate just the name of the user (we'll not want to send the password in the API), this is how we do it!
+			post = await post.populate('user');
 			return res.status(200).json({
 				data    : {
 					post : post
@@ -29,9 +31,10 @@ const create = async (req, res) => {
 const destroy = async (req, res) => {
 	try {
 		let post = await Post.findById(req.params.id);
-		//check if the user is authorized to delete the post
+
 		if (post.user == req.user.id) {
 			post.remove();
+
 			await Comment.deleteMany({ post: req.params.id });
 
 			if (req.xhr) {
@@ -39,19 +42,20 @@ const destroy = async (req, res) => {
 					data    : {
 						post_id : req.params.id
 					},
-					message : 'Post deleted successfully'
+					message : 'Post deleted'
 				});
 			}
-			req.flash('success', 'Post deleted successfully');
+
+			req.flash('success', 'Post and associated comments deleted!');
+
 			return res.redirect('back');
 		}
 		else {
-			req.flash('error', 'You are not authorized to delete this post');
+			req.flash('error', 'You cannot delete this post!');
 			return res.redirect('back');
 		}
 	} catch (err) {
-		req.flash('error', 'Error deleting post');
-		console.log('Error', err);
+		req.flash('error', err);
 		return res.redirect('back');
 	}
 };
