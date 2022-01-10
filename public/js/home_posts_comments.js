@@ -10,7 +10,7 @@ class PostComments {
 		this.postId = postId;
 		this.postContainer = $(`#post-${postId}`);
 		this.newCommentForm = $(`#post-${postId}-comments-form`);
-
+		// console.log('Inside PostComments class constructor');
 		this.createComment(postId);
 
 		let self = this;
@@ -25,14 +25,15 @@ class PostComments {
 		this.newCommentForm.submit(function(e) {
 			e.preventDefault();
 			let self = this;
-
 			$.ajax({
 				type    : 'post',
 				url     : '/comments/create',
 				data    : $(self).serialize(),
 				success : function(data) {
+					console.log(data);
 					let newComment = pSelf.newCommentDom(data.data.comment);
 					$(`#post-comments-${postId}`).prepend(newComment);
+					$('.new-comment-textarea').val('');
 					pSelf.deleteComment($(' .delete-comment-button', newComment));
 
 					new Noty({
@@ -54,16 +55,16 @@ class PostComments {
 		// I've added a class 'delete-comment-button' to the delete comment link and also id to the comment's li
 		return $(`<li id="comment-${comment._id}">
                         <p>
-                            
-                            <small>
-                                <a class="delete-comment-button" href="/comments/destroy/${comment._id}">X</a>
-                            </small>
-                            
                             ${comment.content}
                             <br>
+							
                             <small>
                                 ${comment.user.name}
                             </small>
+                            <small>
+                                <a class="delete-comment-button" href="/comments/destroy/${comment._id}">Delete</a>
+                            </small>
+                            
                         </p>    
 
                 </li>`);
@@ -72,7 +73,6 @@ class PostComments {
 	deleteComment(deleteLink) {
 		$(deleteLink).click(function(e) {
 			e.preventDefault();
-
 			$.ajax({
 				type    : 'get',
 				url     : $(deleteLink).prop('href'),

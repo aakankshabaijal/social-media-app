@@ -4,6 +4,7 @@ const Post = require('../models/post');
 module.exports.create = async function(req, res) {
 	try {
 		let post = await Post.findById(req.body.post);
+		console.log('Inside comment controller');
 
 		if (post) {
 			let comment = await Comment.create({
@@ -12,18 +13,18 @@ module.exports.create = async function(req, res) {
 				user    : req.user._id
 			});
 
-			post.comments.push(comment);
+			post.comments.unshift(comment); //pushes comments to the front of array
 			post.save();
 
 			if (req.xhr) {
 				// Similar for comments to fetch the user's id!
-				comment = await comment.populate('user', 'name').execPopulate();
-
+				console.log('Adding comment via AJAX');
+				comment = await comment.populate('user');
 				return res.status(200).json({
 					data    : {
 						comment : comment
 					},
-					message : 'Post created!'
+					message : 'Comment created!'
 				});
 			}
 
@@ -54,7 +55,7 @@ module.exports.destroy = async function(req, res) {
 					data    : {
 						comment_id : req.params.id
 					},
-					message : 'Post deleted'
+					message : 'Comment deleted'
 				});
 			}
 

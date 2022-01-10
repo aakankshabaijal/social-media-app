@@ -5,6 +5,7 @@ module.exports.home = async (req, res) => {
 	/**
 	 * First adding the authors of each post, then the comments on each post and
 	 * the author of each comment.
+	 * The most recent posts are shown first
 	 */
 	try {
 		let posts = await Post.find({}).sort('-createdAt').populate('user').populate({

@@ -14,7 +14,7 @@
 					$('#posts-list-container>ul').prepend(newPost);
 					$('#new-post-textarea').val('');
 					deletePost($(' .delete-post-button', newPost));
-
+					console.log('Post created! and comment class initialized');
 					// call the create comment class
 					new PostComments(data.data.post._id);
 
@@ -48,7 +48,7 @@
                         </small>                    
                     <div class="post-comments">                        
                             <form id="post-${post._id}-comments-form" action="/comments/create" method="POST">
-                                <textarea name="content" cols="30" rows="2" placeholder="Type Your Comment Here..." required></textarea>
+                                <textarea name="content" cols="30" rows="2" placeholder="Type Your Comment Here..." required class="new-comment-textarea"></textarea>
                                 <input type="hidden" name="post" value="${post._id}" >
                                 <input type="submit" value="Add Comment">
                             </form>    
@@ -56,8 +56,7 @@
                             <ul id="post-comments-${post._id}">                                
                             </ul>
                         	</div>
-                    </div>
-                    
+                    </div>                    
                 </li>`);
 	};
 
@@ -96,6 +95,7 @@
 			// get the post's id by splitting the id attribute
 			let postId = self.prop('id').split('-')[1];
 			new PostComments(postId);
+			// console.log(postId);
 		});
 	};
 

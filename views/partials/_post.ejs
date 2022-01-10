@@ -1,40 +1,41 @@
 <% for(let post of posts) { %>
-<p>
-  <li id="post-<%= post._id%>">
-    <%= post.content %>
-    <br>
-    <% if(locals.user && post.user.id==locals.user.id) { %>
-    <small>
-      <a href="/posts/destroy/<%= post.id %>" class="delete-post-button">Delete</a>
-    </small>
-    <% } %>
-    <br>
-    <small>
-      <%=post.user.name%>
-    </small>
-    <!--here I can add a form for comments on this post if the user is signed in
+
+<li id="post-<%= post._id%>">
+  <%= post.content %>
+  <br>
+  <% if(locals.user && post.user.id==locals.user.id) { %>
+  <small>
+    <a href="/posts/destroy/<%= post.id %>" class="delete-post-button">Delete</a>
+  </small>
+  <% } %>
+  <br>
+  <small>
+    <%=post.user.name%>
+  </small>
+  <!--here I can add a form for comments on this post if the user is signed in
                                     the form will make a post request to /posts/create-comment
                                     -->
-    <div class="post-comments">
-      <% if (locals.user) { %>
-      <form action="/comments/create" id="new-comment-form" method="POST">
-        <textarea name="content" cols="30" rows="2" placeholder="Type Your Comment Here..." required></textarea>
-        <input type="hidden" name="post" value="<%=post.id%>">
-        <input type="submit" value="Add Comment">
-      </form>
-      <% } %>
+  <div class="post-comments">
+    <% if (locals.user) { %>
+    <form action="/comments/create" id="post-<%=post.id%>-comments-form" method="POST">
+      <textarea name="content" cols="30" rows="2" placeholder="Type Your Comment Here..." required class="new-comment-textarea"></textarea>
+      <input type="hidden" name="post" value="<%=post.id%>">
+      <input type="submit" value="Add Comment">
+    </form>
+    <% } %>
 
-      <div class="post-comments-list">
-        <ul id="post-comments-<%= post._id %>">
-          <% for(let comment of post.comments) { %>
+    <div class="post-comments-list">
 
-          <%- include('_comment', {comment : comment}) %>
+      <ul id="post-comments-<%= post._id %>">
+        <% for(let comment of post.comments) { %>
 
-          <% } %>
-        </ul>
-      </div>
+        <%- include('_comment', {comment : comment}) %>
+
+        <% } %>
+      </ul>
     </div>
+  </div>
 
-  </li>
-</p>
+</li>
+
 <% } %>
