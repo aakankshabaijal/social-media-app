@@ -22,6 +22,7 @@ app.use(cookieParser());
 
 app.use(express.static('./public/')); //use static files
 app.use(expressLayouts); //use layout for rendering views
+app.use('/uploads', express.static(__dirname + '/uploads')); //make uploads path available to the browser
 
 //extract style and script from sub-pages into the layout
 app.set('layout extractStyles', true);
