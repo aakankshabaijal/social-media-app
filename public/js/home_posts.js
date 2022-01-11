@@ -9,12 +9,10 @@
 				url     : '/posts/create',
 				data    : newPostForm.serialize(),
 				success : function(data) {
-					console.log(data);
 					let newPost = newPostDom(data.data.post);
 					$('#posts-list-container>ul').prepend(newPost);
 					$('#new-post-textarea').val('');
 					deletePost($(' .delete-post-button', newPost));
-					console.log('Post created! and comment class initialized');
 					// call the create comment class
 					new PostComments(data.data.post._id);
 
@@ -72,7 +70,7 @@
 					$(`#post-${data.data.post_id}`).remove();
 					new Noty({
 						theme   : 'relax',
-						text    : 'Post Deleted',
+						text    : 'Post and associated comments deleted!',
 						type    : 'success',
 						layout  : 'topRight',
 						timeout : 1500
@@ -85,7 +83,11 @@
 		});
 	};
 
-	// loop over all the existing posts on the page (when the window loads for the first time) and call the delete post method on delete link of each, also add AJAX (using the class we've created) to the delete button of each
+	/**
+	 * loop over all the existing posts on the page (when the window loads for the first time)
+	 * and call the delete post method on delete link of each
+	 * also add AJAX (using the class we've created) to the delete button of each
+	 */
 	let convertPostsToAjax = function() {
 		$('#posts-list-container>ul>li').each(function() {
 			let self = $(this);
@@ -95,7 +97,6 @@
 			// get the post's id by splitting the id attribute
 			let postId = self.prop('id').split('-')[1];
 			new PostComments(postId);
-			// console.log(postId);
 		});
 	};
 

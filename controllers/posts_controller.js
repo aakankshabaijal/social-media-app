@@ -18,8 +18,6 @@ const create = async (req, res) => {
 				message : 'Post created successfully'
 			});
 		}
-
-		req.flash('success', 'Post created successfully');
 		return res.redirect('back');
 	} catch (err) {
 		req.flash('error', 'Error creating post');
@@ -45,9 +43,6 @@ const destroy = async (req, res) => {
 					message : 'Post deleted'
 				});
 			}
-
-			req.flash('success', 'Post and associated comments deleted!');
-
 			return res.redirect('back');
 		}
 		else {

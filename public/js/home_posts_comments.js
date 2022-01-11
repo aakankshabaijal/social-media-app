@@ -1,8 +1,20 @@
-// Let's implement this via classes
+/**
+ * Let's implement this via classes
+ * this class would be initialized for every post on the page
+ * 1. When the page loads
+ *  2. Creation of every post dynamically via AJAX
+ */
 
-// this class would be initialized for every post on the page
-// 1. When the page loads
-// 2. Creation of every post dynamically via AJAX
+/**
+ * Class properties : 
+ * 		1. postId
+ * 		2. postContainer
+ * 		3. newCommentForm
+ * Class methods :
+ * 		1. createComment
+ * 		2. newCommentDom
+ * 		3. deleteComment
+ */
 
 class PostComments {
 	// constructor is used to initialize the instance of the class whenever a new instance is created
@@ -10,27 +22,27 @@ class PostComments {
 		this.postId = postId;
 		this.postContainer = $(`#post-${postId}`);
 		this.newCommentForm = $(`#post-${postId}-comments-form`);
-		// console.log('Inside PostComments class constructor');
 		this.createComment(postId);
 
 		let self = this;
 		// call for all the existing comments
+		//the delete comment button in all comments in this post's container
 		$(' .delete-comment-button', this.postContainer).each(function() {
 			self.deleteComment($(this));
 		});
 	}
 
+	//this is a reference to the object of PostComments class
 	createComment(postId) {
-		let pSelf = this;
+		let pSelf = this; //refers to the Post
 		this.newCommentForm.submit(function(e) {
 			e.preventDefault();
-			let self = this;
+			let self = this; //refers to the comment form
 			$.ajax({
 				type    : 'post',
 				url     : '/comments/create',
-				data    : $(self).serialize(),
+				data    : $(self).serialize(), //converting form data to JSON
 				success : function(data) {
-					console.log(data);
 					let newComment = pSelf.newCommentDom(data.data.comment);
 					$(`#post-comments-${postId}`).prepend(newComment);
 					$('.new-comment-textarea').val('');
@@ -52,7 +64,8 @@ class PostComments {
 	}
 
 	newCommentDom(comment) {
-		// I've added a class 'delete-comment-button' to the delete comment link and also id to the comment's li
+		// I've added a class 'delete-comment-button' to the delete comment link
+		// and also id to the comment's li
 		return $(`<li id="comment-${comment._id}">
                         <p>
                             ${comment.content}

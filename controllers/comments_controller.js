@@ -4,7 +4,6 @@ const Post = require('../models/post');
 module.exports.create = async function(req, res) {
 	try {
 		let post = await Post.findById(req.body.post);
-		console.log('Inside comment controller');
 
 		if (post) {
 			let comment = await Comment.create({
@@ -18,7 +17,6 @@ module.exports.create = async function(req, res) {
 
 			if (req.xhr) {
 				// Similar for comments to fetch the user's id!
-				console.log('Adding comment via AJAX');
 				comment = await comment.populate('user');
 				return res.status(200).json({
 					data    : {
