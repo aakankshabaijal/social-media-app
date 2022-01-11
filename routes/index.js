@@ -10,5 +10,6 @@ router.use('/posts', require('./posts'));
 router.use('/comments', require('./comments'));
 
 //for any further routes, add them here
+router.use('/api', require('./api'));
 
 module.exports = router;
