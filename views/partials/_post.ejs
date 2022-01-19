@@ -29,7 +29,7 @@
       <ul id="post-comments-<%= post._id %>">
         <% for(let comment of post.comments) { %>
 
-        <%- include('_comment', {comment : comment}) %>
+        <%- include('_comment', {comment : comment, post: post}) %>
 
         <% } %>
       </ul>

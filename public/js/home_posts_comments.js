@@ -90,6 +90,8 @@ class PostComments {
 				type    : 'get',
 				url     : $(deleteLink).prop('href'),
 				success : function(data) {
+					console.log(data);
+					//!DATA IS NOT IN JSON FORM WHEN DELETING A COMMENT NOT WRITTEN BY LOGGED IN USER
 					$(`#comment-${data.data.comment_id}`).remove();
 
 					new Noty({
