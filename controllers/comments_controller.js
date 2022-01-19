@@ -1,6 +1,8 @@
 const Comment = require('../models/comment');
 const Post = require('../models/post');
 const commentsMailer = require('../mailers/comments_mailer');
+const queue = require('../config/kue');
+const commentEmailWorker = require('../workers/comment-email-worker');
 
 module.exports.create = async function(req, res) {
 	try {
@@ -16,7 +18,18 @@ module.exports.create = async function(req, res) {
 			post.comments.unshift(comment); //pushes comments to the front of array
 			post.save();
 			comment = await comment.populate('user');
-			commentsMailer.newComment(comment);
+			// commentsMailer.newComment(comment);
+
+			//*below code is for sending the email to the user who commented on the post
+			// let job = queue.create('emails', comment).save((err) => {
+			// 	if (err) {
+			// 		console.log(err);
+			// 		return;
+			// 	}
+			// 	else {
+			// 		console.log('job created', job.id);
+			// 	}
+			// });
 
 			if (req.xhr) {
 				// Similar for comments to fetch the user's id!
