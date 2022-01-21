@@ -22,6 +22,7 @@ class PostComments {
 		this.postId = postId;
 		this.postContainer = $(`#post-${postId}`);
 		this.newCommentForm = $(`#post-${postId}-comments-form`);
+
 		this.createComment(postId);
 
 		let self = this;
@@ -47,6 +48,7 @@ class PostComments {
 					$(`#post-comments-${postId}`).prepend(newComment);
 					$('.new-comment-textarea').val('');
 					pSelf.deleteComment($(' .delete-comment-button', newComment));
+					new ToggleLike($(' .like-button', newComment));
 
 					new Noty({
 						theme   : 'relax',
@@ -74,6 +76,7 @@ class PostComments {
                             <small>
                                 ${comment.user.name}
                             </small>
+							<a href="/likes/toggle/?id=${comment._id}&type=Comment" class="like-button" data-likes="0"> 0 Likes </a>
                             <small>
                                 <a class="delete-comment-button" href="/comments/destroy/${comment._id}">Delete</a>
                             </small>
@@ -90,8 +93,6 @@ class PostComments {
 				type    : 'get',
 				url     : $(deleteLink).prop('href'),
 				success : function(data) {
-					console.log(data);
-					//!DATA IS NOT IN JSON FORM WHEN DELETING A COMMENT NOT WRITTEN BY LOGGED IN USER
 					$(`#comment-${data.data.comment_id}`).remove();
 
 					new Noty({

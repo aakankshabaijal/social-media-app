@@ -1,5 +1,6 @@
 const Post = require('../models/post');
 const Comment = require('../models/comment');
+const Like = require('../models/like');
 
 const create = async (req, res) => {
 	//store the data sent in request into the database
@@ -33,7 +34,14 @@ const destroy = async (req, res) => {
 		if (post.user == req.user.id) {
 			post.remove();
 
+			//also have to delete all likes on all comments of that post
+			//loop through all comments and delete all likes on each comment
+			for (let comment of post.comments) {
+				await Like.deleteMany({ likeable: comment._id });
+			}
+
 			await Comment.deleteMany({ post: req.params.id });
+			await Like.deleteMany({ likeable: req.params.id });
 
 			if (req.xhr) {
 				return res.status(200).json({

@@ -12,6 +12,13 @@
   <small>
     <%=post.user.name%>
   </small>
+  <br>
+  <% if (locals.user) { %>
+  <a href="/likes/toggle/?id=<%= post.id %>&type=Post" class="like-button" data-likes="<%= post.likes.length %>"> <%= post.likes.length %> Likes </a>
+  <% } else { %>
+  <%= post.likes.length %> Likes
+  <% } %>
+
   <!--here I can add a form for comments on this post if the user is signed in
                                     the form will make a post request to /posts/create-comment
                                     -->

@@ -8,12 +8,21 @@ module.exports.home = async (req, res) => {
 	 * The most recent posts are shown first
 	 */
 	try {
-		let posts = await Post.find({}).sort('-createdAt').populate('user').populate({
-			path     : 'comments',
-			populate : {
-				path : 'user'
-			}
-		});
+		let posts = await Post.find({})
+			.sort('-createdAt')
+			.populate('user')
+			.populate({
+				path     : 'comments',
+				populate : [
+					{
+						path : 'user'
+					},
+					{
+						path : 'likes'
+					}
+				]
+			})
+			.populate('likes');
 
 		let users = await User.find({});
 

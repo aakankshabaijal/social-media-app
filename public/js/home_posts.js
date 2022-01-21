@@ -13,6 +13,7 @@
 					$('#posts-list-container>ul').prepend(newPost);
 					$('#new-post-textarea').val('');
 					deletePost($(' .delete-post-button', newPost));
+					new ToggleLike($(' .like-button', newPost));
 					// call the create comment class
 					new PostComments(data.data.post._id);
 
@@ -43,8 +44,10 @@
                        <br>                       
                         <small>
                         ${post.user.name}
-                        </small>                    
-                    <div class="post-comments">                        
+                        </small> 
+						<br>  						
+ 						<a href="/likes/toggle/?id=${post._id}&type=Post" class="like-button" data-likes="0"> 0 Likes </a>
+  						<div class="post-comments">                        
                             <form id="post-${post._id}-comments-form" action="/comments/create" method="POST">
                                 <textarea name="content" cols="30" rows="2" placeholder="Type Your Comment Here..." required class="new-comment-textarea"></textarea>
                                 <input type="hidden" name="post" value="${post._id}" >
@@ -97,6 +100,9 @@
 			// get the post's id by splitting the id attribute
 			let postId = self.prop('id').split('-')[1];
 			new PostComments(postId);
+			//this adds the ToggleLike class to each like button in this post,
+			//as well as to all like buttons in the post's comments
+			new ToggleLike($(' .like-button', self));
 		});
 	};
 
