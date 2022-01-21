@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/css/home.css">
 
-
+<% if (locals.user) { %>
 <div id="home-container">
   <section id="feed-posts">
     <h4>
@@ -32,6 +32,17 @@
 
   </section>
 </div>
+<% } else { %>
+<div id="landing-page">
+
+  <img src="/images/mockup.png" alt="" height="500px" width=auto>
+</div>
+
+<a href="https://www.freepik.com/vectors/design">Design vector created by coolvector - www.freepik.com</a>
+<a href="https://www.freepik.com/psd/mockup">Mockup psd created by freepik - www.freepik.com</a>
+<% } %>
+
+
 
 <script src="/js/home_likes.js"></script>
 <script src="/js/home_posts_comments.js"></script>

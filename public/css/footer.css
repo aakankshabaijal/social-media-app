@@ -1,5 +1,4 @@
 footer {
-  margin-top: 2em;
   background-color: #130831;
   color: whitesmoke;
   height: 10vh;
@@ -40,6 +39,11 @@ footer ul li a {
 }
 footer ul li a:hover {
   text-decoration: underline;
+}
+
+.link {
+  color: whitesmoke;
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=footer.css.map */

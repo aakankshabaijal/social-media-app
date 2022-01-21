@@ -1,3 +1,5 @@
+@import './_variables.scss';
+
 #home-container {
 	display: flex;
 	flex-direction: row;
@@ -9,5 +11,21 @@
 		width: 25%;
 		padding: 1em;
 		border-left: 1px solid lightgray;
+	}
+}
+
+#landing-page {
+	background-image: $gradientBg;
+	background-size: 400%;
+	height: 100vh;
+	animation: bg-animation 5s infinite alternate;
+}
+
+@keyframes bg-animation {
+	0% {
+		background-position: left;
+	}
+	100% {
+		background-position: right;
 	}
 }

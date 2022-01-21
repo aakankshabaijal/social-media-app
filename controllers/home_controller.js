@@ -27,7 +27,7 @@ module.exports.home = async (req, res) => {
 		let users = await User.find({});
 
 		return res.render('home', {
-			title     : 'Instacode | Home',
+			title     : 'Clipster | Home',
 			posts     : posts,
 			all_users : users
 		});

@@ -1,8 +1,6 @@
-@import './variables';
+@import './variables.scss';
 
 footer {
-	margin-top: 2em;
-
 	background-color: $darkBg;
 	color: $lightBg;
 	height: 10vh;
@@ -19,4 +17,9 @@ footer {
 	}
 
 	@include navLinks();
+}
+
+.link {
+	color: $lightBg;
+	text-decoration: none;
 }

@@ -12,4 +12,20 @@
   border-left: 1px solid lightgray;
 }
 
+#landing-page {
+  background-image: linear-gradient(45deg, #845ec2, #d65db1, #ff6f91, #ff9671, #ffc75f, #f9f871);
+  background-size: 400%;
+  height: 100vh;
+  animation: bg-animation 5s infinite alternate;
+}
+
+@keyframes bg-animation {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
+
 /*# sourceMappingURL=home.css.map */

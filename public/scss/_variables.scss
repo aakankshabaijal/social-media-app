@@ -1,16 +1,15 @@
 $darkBg: rgb(19, 8, 49);
 $lightBg: whitesmoke;
+$gradientBg: linear-gradient(45deg, #845ec2, #d65db1, #ff6f91, #ff9671, #ffc75f, #f9f871);
 
 @mixin fontFamily {
 	font-family: 'Work Sans', sans-serif;
 }
-
 @mixin centerComponent {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
-
 @mixin createFlexbox($direction, $justifyContent, $alignItems) {
 	display: flex;
 	flex-direction: $direction;
@@ -18,7 +17,6 @@ $lightBg: whitesmoke;
 	justify-content: $justifyContent;
 	align-items: $alignItems;
 }
-
 @mixin navLinks {
 	ul {
 		@include createFlexbox(row, space-between, center);
