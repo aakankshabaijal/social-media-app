@@ -55,10 +55,12 @@ module.exports.create = async function(req, res) {
 module.exports.destroy = async function(req, res) {
 	try {
 		let comment = await Comment.findById(req.params.id);
+		let postId = comment.post;
+		let parentPost = await Post.findById(postId);
 
-		if (comment.user == req.user.id) {
-			let postId = comment.post;
-
+		//if the comment is made by the logged in user or
+		// on a post made by the logged in user, then delete the comment
+		if (parentPost.user == req.user.id || comment.user == req.user.id) {
 			comment.remove();
 
 			let post = Post.findByIdAndUpdate(postId, { $pull: { comments: req.params.id } });
