@@ -69,7 +69,7 @@ const signUp = (req, res) => {
 	}
 
 	res.render('user_sign_up', {
-		title : 'Clipster | Sign Up'
+		title : 'Instaclip | Sign Up'
 	});
 };
 
@@ -78,7 +78,7 @@ const signIn = (req, res) => {
 		return res.redirect('/users/profile');
 	}
 	res.render('user_sign_in', {
-		title : 'Clipster | Sign In'
+		title : 'Instaclip | Sign In'
 	});
 };
 

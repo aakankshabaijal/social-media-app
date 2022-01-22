@@ -1,0 +1,54 @@
+.form-container {
+  width: 50%;
+  background-color: whitesmoke;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 1em;
+  padding: 3em;
+}
+.form-container h2 {
+  text-align: center;
+  padding-bottom: 1em;
+}
+.form-container .col {
+  padding-left: 0;
+}
+.form-container .col button {
+  margin-top: 1em;
+  background-color: #28262c;
+  width: 100%;
+  padding-left: 0;
+  height: 3em;
+}
+.form-container #google-sign-in-btn {
+  background-color: #28262c;
+  height: 3em;
+  margin-top: 1em;
+}
+.form-container #google-sign-in-btn img {
+  width: 1.75em;
+  margin: 0.25em;
+  margin-right: 1em;
+}
+.form-container #google-sign-in-btn a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+.form-container p {
+  font-size: 1em;
+  margin-top: 1em;
+  margin-left: -0.75em;
+  text-align: center;
+}
+.form-container p a {
+  text-decoration: none;
+}
+
+body {
+  background-image: url(/images/gradient.jpg);
+  background-size: 150%;
+}
+
+/*# sourceMappingURL=sign-in.css.map */
