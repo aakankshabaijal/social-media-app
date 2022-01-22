@@ -15,10 +15,81 @@
 }
 
 #landing-page {
-	background-image: $gradientBg;
-	background-size: 400%;
 	height: 100vh;
-	animation: bg-animation 5s infinite alternate;
+	// background-color: #28262c;
+	background-image: url('/images/gradient.jpg');
+	background-size: 300%;
+
+	overflow-y: hidden;
+
+	.block {
+		width: 100%;
+		height: 85%;
+		background-image: $gradientBg;
+		background-size: 400%;
+		animation: bg-animation 6s infinite alternate;
+		transform: skewY(-12deg);
+		transform-origin: 0;
+		position: absolute;
+		top: 0;
+
+		span {
+			height: 190px;
+			position: aboslute;
+		}
+	}
+
+	.landing-page-text {
+		position: relative;
+		height: 80%;
+		display: flex;
+		margin: 1em 0 0 5em;
+		flex-direction: column;
+		justify-content: center;
+		color: white;
+		max-width: 1024px;
+
+		h1 {
+			font-size: 5em;
+			font-weight: bold;
+		}
+		p {
+			font-size: 1.5em;
+		}
+
+		.button-area {
+			position: relative;
+			max-width: 320px;
+
+			a {
+				background: #f5f5f5;
+				border-radius: 0.5em;
+				font-size: large;
+			}
+		}
+	}
+
+	.image-wrapper {
+		position: absolute;
+		top: 2em;
+		right: -8em;
+
+		padding: 1em;
+		border-radius: 10%;
+	}
+
+	#made-by-me {
+		position: absolute;
+		bottom: 0.1em;
+		left: 1em;
+		font-size: 0.8em;
+		color: whitesmoke;
+
+		a {
+			color: whitesmoke;
+			text-decoration: none;
+		}
+	}
 }
 
 @keyframes bg-animation {
