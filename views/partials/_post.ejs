@@ -1,16 +1,25 @@
 <% for(let post of posts) { %>
 
 <li id="post-<%= post._id%>">
-  <%= post.content %>
+  <section class="post-header">
+    <% if (post.user.avatar) { %>
+    <img src="<%= post.user.avatar %>" alt="<%= post.user.name %>">
+    <% }else{ %>
+    <i class="fas fa-user"></i>
+    <% } %>
+    <h5 style="display: inline;"> <%=post.user.name%></h5>
+    <% if(locals.user && post.user.id==locals.user.id) { %>
+    <a href="/posts/destroy/<%= post.id %>" class="delete-post-button"><i class="fas fa-trash-alt"></i></a>
+    <% } %>
+  </section>
   <br>
-  <% if(locals.user && post.user.id==locals.user.id) { %>
-  <small>
-    <a href="/posts/destroy/<%= post.id %>" class="delete-post-button">Delete</a>
-  </small>
-  <% } %>
+  <div class="post-content"><%= post.content %></div>
+
+  <br>
+
   <br>
   <small>
-    <%=post.user.name%>
+
   </small>
   <br>
   <% if (locals.user) { %>

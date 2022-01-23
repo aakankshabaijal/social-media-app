@@ -1,18 +1,23 @@
 @import './_variables.scss';
 header {
 	@include fontFamily();
-
-	background-color: #4158d0;
-	background-image: linear-gradient(45deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
+	position: sticky;
+	background-color: darken($lightPurpleBg, 15%);
+	padding: 3em 0 3em 0;
 	top: 0;
 	max-height: 10vh;
 	@include createFlexbox(row, space-between, center);
+	color: whitesmoke;
 
 	h1 {
 		@include fontFamily();
 		justify-content: flex-start;
-		color: $lightBg;
+		background: $gradientBg;
 		padding-left: 1em;
+		font-weight: 600;
+
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
 	}
 
 	@include navLinks();

@@ -2,6 +2,11 @@ $darkBg: rgb(19, 8, 49);
 $lightBg: whitesmoke;
 $gradientBg: linear-gradient(45deg, #845ec2, #d65db1, #ff6f91, #ff9671, #ffc75f, #f9f871);
 
+$darkPurpleBg: #1f1d36;
+$lightPurpleBg: #3f3351;
+$mauve: #864879;
+$lightPink: #e9a6a6;
+
 @mixin fontFamily {
 	font-family: 'Work Sans', sans-serif;
 }
@@ -26,7 +31,7 @@ $gradientBg: linear-gradient(45deg, #845ec2, #d65db1, #ff6f91, #ff9671, #ffc75f,
 			@include centerComponent();
 			list-style: none;
 			a {
-				color: rgb(49, 30, 83);
+				color: whitesmoke;
 				text-decoration: none;
 				font-size: 1.5rem;
 				font-weight: 400;
