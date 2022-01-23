@@ -1,27 +1,51 @@
-<h1>This is Sign Up page</h1>
+<link rel="stylesheet" href="/css/sign-in.css">
 
-<form action="/users/create" method="POST">
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" name="name" required placeholder="John Doe">
-  </div>
-  <div class="form-group">
-    <label for="email">Email address</label>
-    <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
-  </div>
-  <div class="form-group">
-    <label for="confirm_password">Confirm Password</label>
-    <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="Confirm Password" required>
-  </div>
+<div class="form-container container-lg" style="padding: 2.5em;">
+  <h2>Sign Up for <b>Instaclip</b></h2>
 
-  <button type="submit" class="btn btn-primary">Sign Up</button>
-</form>
+  <form action="/users/create" method="POST">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" name="name" class="form-control" required placeholder="John Doe">
+    </div>
+    <p></p>
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+    </div>
+    <p></p>
+    <div class="container" style="padding-right: 0;">
+      <div class="row">
+        <div class="col" style="padding-right: 0.15em;">
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" style="width:97%" name="password" class="form-control" id="password" placeholder="Password" required>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="Confirm Password" required>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <button type="submit" class="btn btn-dark">Sign Up</button>
+        </div>
+        <div class="col btn" id="google-sign-in-btn">
+          <img src="/images/google-symbol.png" alt="">
+          <a href="/users/auth/google"> Sign Up with Google </a>
+        </div>
+      </div>
+    </div>
+  </form>
 
-<p>
-  <a href="/users/auth/google"> Sign Up with Google </a>
-</p>
+  <p style="margin-top: 1em;">
+    Already have an account? <a href="/users/sign-in">Sign In</a>
+  </p>
+
+</div>
