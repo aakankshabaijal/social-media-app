@@ -4,6 +4,9 @@ body {
   padding: 0;
   background-color: whitesmoke;
   overflow-x: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 /*# sourceMappingURL=layout.css.map */

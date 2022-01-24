@@ -1,9 +1,10 @@
 @import './variables.scss';
 
 footer {
-	background-color: $darkBg;
+	background-color: darken($lightPurpleBg, 15%);
 	color: $lightBg;
 	height: 10vh;
+	flex-shrink: 0;
 
 	@include createFlexbox(row, space-between, center);
 

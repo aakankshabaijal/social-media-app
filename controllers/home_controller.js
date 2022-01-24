@@ -41,3 +41,9 @@ module.exports.home = async (req, res) => {
 		return;
 	}
 };
+
+module.exports.credits = (req, res) => {
+	return res.render('credits', {
+		title : 'Instaclip | Credits'
+	});
+};

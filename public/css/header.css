@@ -45,6 +45,7 @@ header ul li a {
 }
 header ul li a:hover {
   text-decoration: underline;
+  color: whitesmoke;
 }
 
 /*# sourceMappingURL=header.css.map */

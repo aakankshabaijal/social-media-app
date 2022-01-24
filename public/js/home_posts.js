@@ -67,7 +67,7 @@
 		else {
 			return $(`<li id="post-${post._id}">
 					<section class="post-header">
-					<i class="fas fa-user" />
+					<i class="fas fa-user"></i>
 					<h5 style="display: inline;"> ${post.user.name}</h5>
 					<a href="/posts/destroy/<%= post.id %>" class="delete-post-button"><i class="fas fa-trash-alt"></i></a>
 					</section>
