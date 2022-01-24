@@ -37,48 +37,62 @@
 		if (post.user.avatar) {
 			return $(`<li id="post-${post._id}">
 					<section class="post-header">
-    				<img src=${post.user.avatar} alt=post.user.name />
-    				<h5 style="display: inline;"> ${post.user.name}</h5>
-   					<a href="/posts/destroy/<%= post.id %>" class="delete-post-button"><i class="fas fa-trash-alt"></i></a>
-    				</section>
-					 <div class="post-content">${post.content}</div>					
- 						<a href="/likes/toggle/?id=${post._id}&type=Post" class="like-button" data-likes="0"><i class="far fa-heart"></i> 0 </a>
-  						<i class="far fa-comment-dots"></i> ${post.comments.length}
-						 <div class="post-comments">                        
-                            <form id="post-${post._id}-comments-form" action="/comments/create" method="POST">
-                                <textarea name="content" cols="30" rows="2" placeholder="Type Your Comment Here..." required class="new-comment-textarea"></textarea>
-                                <input type="hidden" name="post" value="${post._id}" >
-                                <input type="submit" value="Add Comment">
-                            </form>    
-                            <div class="post-comments-list">
-                            <ul id="post-comments-${post._id}">                                
-                            </ul>
-                        	</div>
-                    </div>                    
-                </li>`);
+					<img src=${post.user.avatar} alt=post.user.name />
+					<h5 style="display: inline;"> ${post.user.name}</h5>
+					<a href="/posts/destroy/<%= post.id %>" class="delete-post-button"><i class="fas fa-trash-alt"></i></a>
+					</section>
+					 <div class="post-content">${post.content}</div>
+						<a href="/likes/toggle/?id=${post._id}&type=Post" class="like-button" data-likes="0"><i class="far fa-heart"></i> 0 </a>
+						<i class="far fa-comment-dots"></i> ${post.comments.length}
+						  <hr>
+						  <div class="post-comments">
+		                    <form id="post-${post._id}-comments-form" action="/comments/create" method="POST">
+		                        <div class="row">
+									<div class="col-md-10">
+		 								<textarea name="content" cols="30" rows="2" placeholder="Type Your Comment Here..." required class="new-comment-textarea btn"></textarea>
+		  								<input type="hidden" name="post" value=${post._id}>
+									</div>
+									<div class="col-md-1">
+		  								<input type="submit" class="btn btn-outline-light" value="Comment">
+									</div>
+								</div>
+		                    </form>
+		                    <div class="post-comments-list">
+		                    <ul id="post-comments-${post._id}">
+		                    </ul>
+		                	</div>
+		            </div>
+		        </li>`);
 		}
 		else {
 			return $(`<li id="post-${post._id}">
 					<section class="post-header">
-    				<i class="fas fa-user" />
-    				<h5 style="display: inline;"> ${post.user.name}</h5>
-   					<a href="/posts/destroy/<%= post.id %>" class="delete-post-button"><i class="fas fa-trash-alt"></i></a>
-    				</section>
-					 <div class="post-content">${post.content}</div>					
- 						<a href="/likes/toggle/?id=${post._id}&type=Post" class="like-button" data-likes="0"> <i class="far fa-heart"></i> 0</a>
-  						<i class="far fa-comment-dots"></i> ${post.comments.length}
-						 <div class="post-comments">                        
-                            <form id="post-${post._id}-comments-form" action="/comments/create" method="POST">
-                                <textarea name="content" cols="30" rows="2" placeholder="Type Your Comment Here..." required class="new-comment-textarea"></textarea>
-                                <input type="hidden" name="post" value="${post._id}" >
-                                <input type="submit" value="Add Comment">
-                            </form>    
-                            <div class="post-comments-list">
-                            <ul id="post-comments-${post._id}">                                
-                            </ul>
-                        	</div>
-                    </div>                    
-                </li>`);
+					<i class="fas fa-user" />
+					<h5 style="display: inline;"> ${post.user.name}</h5>
+					<a href="/posts/destroy/<%= post.id %>" class="delete-post-button"><i class="fas fa-trash-alt"></i></a>
+					</section>
+					 <div class="post-content">${post.content}</div>
+						<a href="/likes/toggle/?id=${post._id}&type=Post" class="like-button" data-likes="0"> <i class="far fa-heart"></i> 0</a>
+						<i class="far fa-comment-dots"></i> ${post.comments.length}
+						  <hr>
+						 <div class="post-comments">
+		                    <form id="post-${post._id}-comments-form" action="/comments/create" method="POST">
+		                        <div class="row">
+									<div class="col-md-10">
+		 								<textarea name="content" cols="30" rows="2" placeholder="Type Your Comment Here..." required class="new-comment-textarea btn"></textarea>
+		  								<input type="hidden" name="post" value=${post._id}>
+									</div>
+									<div class="col-md-1">
+		  								<input type="submit" class="btn btn-outline-light" value="Comment">
+									</div>
+								</div>
+		                    </form>
+		                    <div class="post-comments-list">
+		                    <ul id="post-comments-${post._id}">
+		                    </ul>
+		                	</div>
+		            </div>
+		        </li>`);
 		}
 	};
 

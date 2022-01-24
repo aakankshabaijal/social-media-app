@@ -38,6 +38,7 @@ class PostComments {
 		let pSelf = this; //refers to the Post
 		this.newCommentForm.submit(function(e) {
 			e.preventDefault();
+
 			let self = this; //refers to the comment form
 			$.ajax({
 				type    : 'post',
@@ -45,6 +46,7 @@ class PostComments {
 				data    : $(self).serialize(), //converting form data to JSON
 				success : function(data) {
 					let newComment = pSelf.newCommentDom(data.data.comment);
+
 					$(`#post-comments-${postId}`).prepend(newComment);
 					$('.new-comment-textarea').val('');
 					pSelf.deleteComment($(' .delete-comment-button', newComment));
@@ -59,6 +61,7 @@ class PostComments {
 					}).show();
 				},
 				error   : function(error) {
+					console.log('ERROR', error);
 					console.log(error.responseText);
 				}
 			});
@@ -68,22 +71,29 @@ class PostComments {
 	newCommentDom(comment) {
 		// I've added a class 'delete-comment-button' to the delete comment link
 		// and also id to the comment's li
-		return $(`<li id="comment-${comment._id}">
-                        <p>
-                            ${comment.content}
-                            <br>
-							
-                            <small>
-                                ${comment.user.name}
-                            </small>
-							<a href="/likes/toggle/?id=${comment._id}&type=Comment" class="like-button" data-likes="0"> 0 Likes </a>
-                            <small>
-                                <a class="delete-comment-button" href="/comments/destroy/${comment._id}">Delete</a>
-                            </small>
-                            
-                        </p>    
 
-                </li>`);
+		if (comment.user.avatar) {
+			return $(`<li id="comment-${comment._id}">
+					<section class="comment">
+						<img src=${comment.user.avatar} alt=${comment.user.name}>
+						<h6 style="display: inline;"> <b> ${comment.user.name}</b></h6>
+		                ${comment.content}
+						<a href="/likes/toggle/?id=${comment._id}&type=Comment" class="like-button" data-likes="0"><i class="far fa-heart"></i>  0</a>
+		                <a class="delete-comment-button" href="/comments/destroy/${comment._id}"><i class="fas fa-trash-alt"></i></a>
+					</section>
+		        </li>`);
+		}
+		else {
+			return $(`<li id="comment-${comment._id}">
+					<section class="comment">
+						<i class="fas fa-user"></i>
+						<h6 style="display: inline;"> <b> ${comment.user.name}</b></h6>
+		                ${comment.content}
+						<a href="/likes/toggle/?id=${comment._id}&type=Comment" class="like-button" data-likes="0"><i class="far fa-heart"></i>  0</a>
+		                <a class="delete-comment-button" href="/comments/destroy/${comment._id}"><i class="fas fa-trash-alt"></i></a>
+					</section>
+		        </li>`);
+		}
 	}
 
 	deleteComment(deleteLink) {
