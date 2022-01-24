@@ -22,7 +22,12 @@ module.exports.home = async (req, res) => {
 					}
 				]
 			})
-			.populate('likes');
+			.populate({
+				path     : 'likes',
+				populate : {
+					path : 'user'
+				}
+			});
 
 		let users = await User.find({});
 

@@ -1,22 +1,29 @@
 <li id="comment-<%= comment.id%>">
-  <p>
-
+  <section class="comment">
+    <% if (comment.user.avatar) { %>
+    <img src="<%= comment.user.avatar %>" alt="<%= comment.user.name %>">
+    <% }else{ %>
+    <i class="fas fa-user"></i>
+    <% } %>
+    <h6 style="display: inline;"> <b><%=comment.user.name%></b></h6>
     <%= comment.content %>
-    <br>
-    <small>
-      <%=comment.user.name%>
-    </small>
-    <% if (locals.user) { %>
-    <a href="/likes/toggle/?id=<%= comment.id%>&type=Comment" class="like-button" data-likes="<%= comment.likes.length %>"> <%= comment.likes.length %> Likes </a>
-    <% } else { %>
-    <%= comment.likes.length %> Likes
+    <% let hasUserLikedComment = false %>
+    <% for (let like of comment.likes) { %>
+    <% if (like.user == locals.user.id) { %>
+    <% hasUserLikedComment = true; break; %>
     <% } %>
-    <% if(locals.user && (comment.user.id==locals.user.id ||post.user.id==locals.user.id)) { %>
+    <% } %>
 
-    <small>
-      <a href="/comments/destroy/<%= comment.id %>" class="delete-comment-button">Delete</a>
-    </small>
+    <% if(hasUserLikedComment) { %>
+    <a href="/likes/toggle/?id=<%= comment.id %>&type=Comment" class="like-button" data-likes="<%= comment.likes.length %>"> <i class="fas fa-heart"></i> <%= comment.likes.length %> </a>
+    <% } else { %>
+    <a href="/likes/toggle/?id=<%= comment.id %>&type=Comment" class="like-button" data-likes="<%= comment.likes.length %>"> <i class="far fa-heart"></i> <%= comment.likes.length %> </a>
     <% } %>
-    <br>
-  </p>
+
+    <% if(locals.user && (comment.user.id==locals.user.id ||post.user.id==locals.user.id)) { %>
+    <a href="/comments/destroy/<%= comment.id %>" class="delete-comment-button"><i class="fas fa-trash-alt"></i></a>
+    <% } %>
+  </section>
+  <br>
+
 </li>

@@ -88,6 +88,9 @@
 					padding: 1em;
 
 					.post-header {
+						@include centerComponent();
+						flex-wrap: nowrap;
+						justify-content: flex-start;
 						img {
 							border-radius: 50%;
 							width: 3em;
@@ -100,10 +103,11 @@
 						}
 
 						a {
+							margin-left: auto;
 							display: inline;
 							color: whitesmoke;
 							text-decoration: none;
-							padding-left: 78%;
+
 							i {
 								font-size: 1em;
 							}
@@ -112,6 +116,76 @@
 
 					.post-content {
 						margin: 1em 0 1em 0;
+					}
+
+					.like-button {
+						text-decoration: none;
+						color: whitesmoke;
+						font-size: 1.25em;
+						padding-right: 1em;
+
+						.fas {
+							color: $lightPink;
+						}
+					}
+
+					.fa-comment-dots {
+						font-size: 1.25em;
+					}
+
+					.post-comments {
+						textarea {
+							width: 100%;
+							height: 2.5em;
+							text-align: left;
+							cursor: text;
+							border: none;
+							border-radius: 0.25em;
+							padding-left: 0.5em;
+							padding-right: 0.5em;
+
+							font-size: 1em;
+							background-color: #444658;
+							color: whitesmoke;
+						}
+
+						textarea:focus {
+							outline: none;
+							box-shadow: none;
+						}
+
+						li {
+							height: 3em;
+						}
+
+						.comment {
+							@include centerComponent();
+							h6 {
+								margin-right: 1em;
+								margin-bottom: 0;
+							}
+							img {
+								border-radius: 50%;
+								width: 3em;
+								padding-right: 0.5em;
+							}
+							i {
+								font-size: 2em;
+								padding-left: 0.5em;
+								padding-right: 0.5em;
+							}
+
+							.like-button {
+								margin-left: auto;
+								i {
+									font-size: 0.75em;
+								}
+							}
+							.delete-comment-button {
+								font-size: 0.5em;
+								color: whitesmoke;
+							}
+						}
 					}
 				}
 			}

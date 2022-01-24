@@ -34,20 +34,17 @@
 
 	// method to create a post in DOM
 	let newPostDom = function(post) {
-		return $(`<li id="post-${post._id}">
-                    
-                         ${post.content}
-                        <br>
-                        <small>
-                            <a class="delete-post-button"  href="/posts/destroy/${post._id}">Delete</a>
-                        </small>
-                       <br>                       
-                        <small>
-                        ${post.user.name}
-                        </small> 
-						<br>  						
- 						<a href="/likes/toggle/?id=${post._id}&type=Post" class="like-button" data-likes="0"> 0 Likes </a>
-  						<div class="post-comments">                        
+		if (post.user.avatar) {
+			return $(`<li id="post-${post._id}">
+					<section class="post-header">
+    				<img src=${post.user.avatar} alt=post.user.name />
+    				<h5 style="display: inline;"> ${post.user.name}</h5>
+   					<a href="/posts/destroy/<%= post.id %>" class="delete-post-button"><i class="fas fa-trash-alt"></i></a>
+    				</section>
+					 <div class="post-content">${post.content}</div>					
+ 						<a href="/likes/toggle/?id=${post._id}&type=Post" class="like-button" data-likes="0"><i class="far fa-heart"></i> 0 </a>
+  						<i class="far fa-comment-dots"></i> ${post.comments.length}
+						 <div class="post-comments">                        
                             <form id="post-${post._id}-comments-form" action="/comments/create" method="POST">
                                 <textarea name="content" cols="30" rows="2" placeholder="Type Your Comment Here..." required class="new-comment-textarea"></textarea>
                                 <input type="hidden" name="post" value="${post._id}" >
@@ -59,6 +56,30 @@
                         	</div>
                     </div>                    
                 </li>`);
+		}
+		else {
+			return $(`<li id="post-${post._id}">
+					<section class="post-header">
+    				<i class="fas fa-user" />
+    				<h5 style="display: inline;"> ${post.user.name}</h5>
+   					<a href="/posts/destroy/<%= post.id %>" class="delete-post-button"><i class="fas fa-trash-alt"></i></a>
+    				</section>
+					 <div class="post-content">${post.content}</div>					
+ 						<a href="/likes/toggle/?id=${post._id}&type=Post" class="like-button" data-likes="0"> <i class="far fa-heart"></i> 0</a>
+  						<i class="far fa-comment-dots"></i> ${post.comments.length}
+						 <div class="post-comments">                        
+                            <form id="post-${post._id}-comments-form" action="/comments/create" method="POST">
+                                <textarea name="content" cols="30" rows="2" placeholder="Type Your Comment Here..." required class="new-comment-textarea"></textarea>
+                                <input type="hidden" name="post" value="${post._id}" >
+                                <input type="submit" value="Add Comment">
+                            </form>    
+                            <div class="post-comments-list">
+                            <ul id="post-comments-${post._id}">                                
+                            </ul>
+                        	</div>
+                    </div>                    
+                </li>`);
+		}
 	};
 
 	// method to delete a post from DOM

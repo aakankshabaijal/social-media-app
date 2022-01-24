@@ -1,6 +1,7 @@
 <% for(let post of posts) { %>
 
 <li id="post-<%= post._id%>">
+
   <section class="post-header">
     <% if (post.user.avatar) { %>
     <img src="<%= post.user.avatar %>" alt="<%= post.user.name %>">
@@ -12,41 +13,40 @@
     <a href="/posts/destroy/<%= post.id %>" class="delete-post-button"><i class="fas fa-trash-alt"></i></a>
     <% } %>
   </section>
-  <br>
+
   <div class="post-content"><%= post.content %></div>
-
-  <br>
-
-  <br>
-  <small>
-
-  </small>
-  <br>
-  <% if (locals.user) { %>
-  <a href="/likes/toggle/?id=<%= post.id %>&type=Post" class="like-button" data-likes="<%= post.likes.length %>"> <%= post.likes.length %> Likes </a>
+  <!-- how do I know if I have liked the post -->
+  <% let hasUserLiked = false %>
+  <% for (let like of post.likes) { %>
+  <% if (like.user == locals.user.id) { %>
+  <% hasUserLiked = true; break; %>
+  <% } %>
+  <% } %>
+  <% if(hasUserLiked) { %>
+  <a href="/likes/toggle/?id=<%= post.id %>&type=Post" class="like-button" data-likes="<%= post.likes.length %>"> <i class="fas fa-heart"></i> <%= post.likes.length %> </a>
   <% } else { %>
-  <%= post.likes.length %> Likes
+  <a href="/likes/toggle/?id=<%= post.id %>&type=Post" class="like-button" data-likes="<%= post.likes.length %>"> <i class="far fa-heart"></i> <%= post.likes.length %> </a>
   <% } %>
 
-  <!--here I can add a form for comments on this post if the user is signed in
-                                    the form will make a post request to /posts/create-comment
-                                    -->
+  <i class="far fa-comment-dots"></i> <%= post.comments.length %>
+  <hr>
   <div class="post-comments">
-    <% if (locals.user) { %>
     <form action="/comments/create" id="post-<%=post.id%>-comments-form" method="POST">
-      <textarea name="content" cols="30" rows="2" placeholder="Type Your Comment Here..." required class="new-comment-textarea"></textarea>
-      <input type="hidden" name="post" value="<%=post.id%>">
-      <input type="submit" value="Add Comment">
+      <div class="row">
+        <div class="col-md-10">
+          <textarea name="content" cols="30" rows="2" placeholder="Type Your Comment Here..." required class="new-comment-textarea btn"></textarea>
+          <input type="hidden" name="post" value="<%=post.id%>">
+        </div>
+        <div class="col-md-1">
+          <input type="submit" class="btn btn-outline-light" value="Comment">
+        </div>
+      </div>
     </form>
-    <% } %>
 
     <div class="post-comments-list">
-
       <ul id="post-comments-<%= post._id %>">
         <% for(let comment of post.comments) { %>
-
         <%- include('_comment', {comment : comment, post: post}) %>
-
         <% } %>
       </ul>
     </div>

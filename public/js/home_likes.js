@@ -19,13 +19,14 @@ class ToggleLike {
 
 					if (data.data.deleted == true) {
 						likesCount -= 1;
+						$(self).attr('data-likes', likesCount);
+						$(self).html(` <i class="far fa-heart"></i> ${likesCount}`);
 					}
 					else {
 						likesCount += 1;
+						$(self).attr('data-likes', likesCount);
+						$(self).html(` <i class="fas fa-heart"></i> ${likesCount}`);
 					}
-
-					$(self).attr('data-likes', likesCount);
-					$(self).html(`${likesCount} Likes`);
 				})
 				.fail(function(errData) {
 					console.log('error in completing the request');
