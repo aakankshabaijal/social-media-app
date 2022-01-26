@@ -1,5 +1,42 @@
+@import './_variables.scss';
+
+body {
+	background-color: darken($lightPurpleBg, 15%);
+	color: whitesmoke;
+}
+
 .content {
 	flex: 1 0 auto;
+	margin: 2em;
+
+	section {
+		display: flex;
+		img {
+			border-radius: 50%;
+		}
+		i {
+			font-size: 4em;
+			padding-top: 0.5em;
+			padding-left: 0.5em;
+		}
+
+		.profile-pic {
+			width: 10vw;
+			height: 10vw;
+		}
+
+		.user-info {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding-left: 2em;
+
+			p {
+				font-size: 1.5em;
+				margin: 0;
+			}
+		}
+	}
 }
 
 footer {
