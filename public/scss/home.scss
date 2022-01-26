@@ -268,6 +268,9 @@
 
 		padding: 1em;
 		border-radius: 10%;
+		img {
+			width: 70vw;
+		}
 	}
 
 	#made-by-me {
@@ -292,3 +295,86 @@
 		background-position: right;
 	}
 }
+
+@media (max-width: 768px) {
+	#landing-page {
+		.landing-page-text {
+			margin: 1em 0 0 1em;
+			text-align: center;
+			.button-area {
+				max-width: none;
+			}
+		}
+		.image-wrapper {
+			position: absolute;
+			top: 55vh;
+			right: -3em;
+
+			img {
+				width: 90vw;
+			}
+		}
+	}
+}
+
+@media (max-width: 576px) {
+	body {
+		overflow-x: hidden;
+	}
+	#landing-page {
+		.landing-page-text {
+			margin: 1em 0 0 1em;
+			text-align: center;
+		}
+		.image-wrapper {
+			position: absolute;
+			top: 60vh;
+			right: -3em;
+
+			img {
+				width: 100vw;
+			}
+		}
+
+		#made-by-me {
+			left: 22%;
+		}
+	}
+
+	#home-container {
+		#feed-posts {
+			width: 100%;
+			padding: 0;
+			.create-new-post {
+				#btn-trigger-modal {
+					width: 80%;
+				}
+			}
+			#posts-list-container {
+				ul {
+					li {
+						.post-comments {
+							.col {
+								display: inline;
+							}
+							.col-md-10 {
+								width: 65%;
+							}
+							.col-md-1 {
+								width: 10%;
+							}
+							li {
+								height: auto;
+							}
+						}
+					}
+				}
+			}
+		}
+		#user-friends {
+			display: none;
+		}
+	}
+}
+
+// TODO: Responsive comments in mobile view

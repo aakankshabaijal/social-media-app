@@ -235,6 +235,9 @@
   padding: 1em;
   border-radius: 10%;
 }
+#landing-page .image-wrapper img {
+  width: 70vw;
+}
 #landing-page #made-by-me {
   position: absolute;
   bottom: 0.1em;
@@ -253,6 +256,67 @@
   }
   100% {
     background-position: right;
+  }
+}
+@media (max-width: 768px) {
+  #landing-page .landing-page-text {
+    margin: 1em 0 0 1em;
+    text-align: center;
+  }
+  #landing-page .landing-page-text .button-area {
+    max-width: none;
+  }
+  #landing-page .image-wrapper {
+    position: absolute;
+    top: 55vh;
+    right: -3em;
+  }
+  #landing-page .image-wrapper img {
+    width: 90vw;
+  }
+}
+@media (max-width: 576px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  #landing-page .landing-page-text {
+    margin: 1em 0 0 1em;
+    text-align: center;
+  }
+  #landing-page .image-wrapper {
+    position: absolute;
+    top: 60vh;
+    right: -3em;
+  }
+  #landing-page .image-wrapper img {
+    width: 100vw;
+  }
+  #landing-page #made-by-me {
+    left: 22%;
+  }
+
+  #home-container #feed-posts {
+    width: 100%;
+    padding: 0;
+  }
+  #home-container #feed-posts .create-new-post #btn-trigger-modal {
+    width: 80%;
+  }
+  #home-container #feed-posts #posts-list-container ul li .post-comments .col {
+    display: inline;
+  }
+  #home-container #feed-posts #posts-list-container ul li .post-comments .col-md-10 {
+    width: 65%;
+  }
+  #home-container #feed-posts #posts-list-container ul li .post-comments .col-md-1 {
+    width: 10%;
+  }
+  #home-container #feed-posts #posts-list-container ul li .post-comments li {
+    height: auto;
+  }
+  #home-container #user-friends {
+    display: none;
   }
 }
 

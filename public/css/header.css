@@ -48,4 +48,13 @@ header ul li a:hover {
   color: whitesmoke;
 }
 
+@media (max-width: 576px) {
+  header ul {
+    margin-bottom: 0;
+  }
+  header ul li a {
+    font-size: 1em;
+  }
+}
+
 /*# sourceMappingURL=header.css.map */

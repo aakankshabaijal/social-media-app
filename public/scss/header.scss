@@ -22,3 +22,16 @@ header {
 
 	@include navLinks();
 }
+
+@media (max-width: 576px) {
+	header {
+		ul {
+			margin-bottom: 0;
+			li {
+				a {
+					font-size: 1em;
+				}
+			}
+		}
+	}
+}
