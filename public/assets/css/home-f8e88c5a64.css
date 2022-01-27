@@ -1,0 +1,326 @@
+#home-container {
+  display: flex;
+  flex-direction: row;
+  background-color: #1a1522;
+  background-size: 300%;
+  color: whitesmoke;
+}
+#home-container #feed-posts {
+  width: 75%;
+  padding-left: 3em;
+  padding-right: 3em;
+}
+#home-container #feed-posts .create-new-post {
+  background-color: #1f1d36;
+  border-radius: 0.5em;
+  height: 5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 1em;
+}
+#home-container #feed-posts .create-new-post img {
+  border-radius: 50%;
+  width: 3em;
+  padding-right: 0.5em;
+}
+#home-container #feed-posts .create-new-post i {
+  font-size: 2em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+#home-container #feed-posts .create-new-post #btn-trigger-modal {
+  width: 90%;
+  text-align: left;
+  background-color: #444658;
+  border: none;
+  color: whitesmoke;
+}
+#home-container #feed-posts .create-new-post .modal-content {
+  background-color: #1f1d36;
+}
+#home-container #feed-posts .create-new-post .modal-content .modal-header,
+#home-container #feed-posts .create-new-post .modal-content .modal-body,
+#home-container #feed-posts .create-new-post .modal-content .modal-footer {
+  border: none;
+}
+#home-container #feed-posts .create-new-post .modal-content .btn-close {
+  background-color: whitesmoke;
+  opacity: 1;
+}
+#home-container #feed-posts .create-new-post .modal-content .modal-title {
+  font-weight: bold;
+  text-align: center;
+}
+#home-container #feed-posts .create-new-post .modal-content textarea {
+  width: 100%;
+  height: 8em;
+  border: none;
+  border-radius: 0.25em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  font-size: 1em;
+  background-color: #1f1d36;
+  color: whitesmoke;
+}
+#home-container #feed-posts .create-new-post .modal-content textarea:focus {
+  outline: none;
+}
+#home-container #feed-posts #posts-list-container ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+#home-container #feed-posts #posts-list-container ul li {
+  background-color: #1f1d36;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  width: 100%;
+  border-radius: 0.5em;
+  padding: 1em;
+}
+#home-container #feed-posts #posts-list-container ul li .post-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+#home-container #feed-posts #posts-list-container ul li .post-header img {
+  border-radius: 50%;
+  width: 3em;
+  padding-right: 0.5em;
+}
+#home-container #feed-posts #posts-list-container ul li .post-header i {
+  font-size: 2em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+#home-container #feed-posts #posts-list-container ul li .post-header a {
+  margin-left: auto;
+  display: inline;
+  color: whitesmoke;
+  text-decoration: none;
+}
+#home-container #feed-posts #posts-list-container ul li .post-header a i {
+  font-size: 1em;
+}
+#home-container #feed-posts #posts-list-container ul li .post-content {
+  margin: 1em 0 1em 0;
+}
+#home-container #feed-posts #posts-list-container ul li .like-button {
+  text-decoration: none;
+  color: whitesmoke;
+  font-size: 1.25em;
+  padding-right: 1em;
+}
+#home-container #feed-posts #posts-list-container ul li .like-button .fas {
+  color: #e9a6a6;
+}
+#home-container #feed-posts #posts-list-container ul li .fa-comment-dots {
+  font-size: 1.25em;
+}
+#home-container #feed-posts #posts-list-container ul li .post-comments textarea {
+  width: 100%;
+  height: 2.5em;
+  text-align: left;
+  cursor: text;
+  border: none;
+  border-radius: 0.25em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  font-size: 1em;
+  background-color: #444658;
+  color: whitesmoke;
+}
+#home-container #feed-posts #posts-list-container ul li .post-comments textarea:focus {
+  outline: none;
+  box-shadow: none;
+}
+#home-container #feed-posts #posts-list-container ul li .post-comments li {
+  height: 3em;
+}
+#home-container #feed-posts #posts-list-container ul li .post-comments .comment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#home-container #feed-posts #posts-list-container ul li .post-comments .comment h6 {
+  margin-right: 1em;
+  margin-bottom: 0;
+}
+#home-container #feed-posts #posts-list-container ul li .post-comments .comment img {
+  border-radius: 50%;
+  width: 3em;
+  padding-right: 0.5em;
+}
+#home-container #feed-posts #posts-list-container ul li .post-comments .comment i {
+  font-size: 2em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+#home-container #feed-posts #posts-list-container ul li .post-comments .comment .like-button {
+  margin-left: auto;
+}
+#home-container #feed-posts #posts-list-container ul li .post-comments .comment .like-button i {
+  font-size: 0.75em;
+}
+#home-container #feed-posts #posts-list-container ul li .post-comments .comment .delete-comment-button {
+  font-size: 0.5em;
+  color: whitesmoke;
+}
+#home-container #user-friends {
+  width: 25%;
+  padding: 1em;
+  border-left: 1px solid lightgray;
+}
+#home-container #user-friends a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+#home-container textarea {
+  resize: none;
+}
+
+#landing-page {
+  height: 100vh;
+  background-color: #1f1d36;
+  background-size: 300%;
+  overflow-y: hidden;
+}
+#landing-page .block {
+  width: 100%;
+  height: 85%;
+  background-image: linear-gradient(45deg, #845ec2, #d65db1, #ff6f91, #ff9671, #ffc75f, #f9f871);
+  background-size: 400%;
+  animation: bg-animation 5s infinite alternate;
+  transform: skewY(-12deg);
+  transform-origin: 0;
+  position: absolute;
+  top: 0;
+}
+#landing-page .block span {
+  height: 190px;
+  position: aboslute;
+}
+#landing-page .landing-page-text {
+  position: relative;
+  height: 80%;
+  display: flex;
+  margin: 1em 0 0 5em;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  max-width: 1024px;
+}
+#landing-page .landing-page-text h1 {
+  font-size: 5em;
+  font-weight: bold;
+}
+#landing-page .landing-page-text p {
+  font-size: 1.5em;
+}
+#landing-page .landing-page-text .button-area {
+  position: relative;
+  max-width: 320px;
+}
+#landing-page .landing-page-text .button-area a {
+  background: #f5f5f5;
+  border-radius: 0.5em;
+  font-size: large;
+}
+#landing-page .image-wrapper {
+  position: absolute;
+  top: 2em;
+  right: -8em;
+  padding: 1em;
+  border-radius: 10%;
+}
+#landing-page .image-wrapper img {
+  width: 70vw;
+}
+#landing-page #made-by-me {
+  position: absolute;
+  bottom: 0.1em;
+  left: 1em;
+  font-size: 0.8em;
+  color: whitesmoke;
+}
+#landing-page #made-by-me a {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+@keyframes bg-animation {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
+@media (max-width: 768px) {
+  #landing-page .landing-page-text {
+    margin: 1em 0 0 1em;
+    text-align: center;
+  }
+  #landing-page .landing-page-text .button-area {
+    max-width: none;
+  }
+  #landing-page .image-wrapper {
+    position: absolute;
+    top: 55vh;
+    right: -3em;
+  }
+  #landing-page .image-wrapper img {
+    width: 90vw;
+  }
+}
+@media (max-width: 576px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  #landing-page .landing-page-text {
+    margin: 1em 0 0 1em;
+    text-align: center;
+  }
+  #landing-page .image-wrapper {
+    position: absolute;
+    top: 60vh;
+    right: -3em;
+  }
+  #landing-page .image-wrapper img {
+    width: 100vw;
+  }
+  #landing-page #made-by-me {
+    left: 22%;
+  }
+
+  #home-container #feed-posts {
+    width: 100%;
+    padding: 0;
+  }
+  #home-container #feed-posts .create-new-post #btn-trigger-modal {
+    width: 80%;
+  }
+  #home-container #feed-posts #posts-list-container ul li .post-comments .col {
+    display: inline;
+  }
+  #home-container #feed-posts #posts-list-container ul li .post-comments .col-md-10 {
+    width: 65%;
+  }
+  #home-container #feed-posts #posts-list-container ul li .post-comments .col-md-1 {
+    width: 10%;
+  }
+  #home-container #feed-posts #posts-list-container ul li .post-comments li {
+    height: auto;
+  }
+  #home-container #feed-posts #posts-list-container ul li .post-comments .comment .like-button {
+    flex-shrink: 0;
+  }
+  #home-container #user-friends {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=home.css.map */

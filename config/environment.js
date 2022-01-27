@@ -12,7 +12,7 @@ const accessLogStream = rfs.createStream('access.log', {
 
 const development = {
 	name                 : 'development',
-	asset_path           : './public/',
+	asset_path           : './assets/',
 	session_cookie_key   : 'blahsomething',
 	db_name              : 'instacode_development',
 	smtp                 : {
@@ -65,3 +65,5 @@ const production = {
 };
 
 module.exports = eval(process.env.INSTACODE_ENVIRONMENT) ? eval(process.env.INSTACODE_ENVIRONMENT) : development;
+
+// module.exports = development;

@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="<%= assetPath('css/home.css')%>">
 
 <% if (locals.user) { %>
 <div id="home-container">
@@ -58,7 +58,7 @@
   </section>
 </div>
 <% } else { %>
-<div id="landing-page">
+<div id="landing-page" style="background-color: #0f0544;">
 
   <div class="block">
     <span></span>
@@ -75,7 +75,7 @@
   </div>
 
   <div class="image-wrapper">
-    <img src="/images/mockup.png" alt="">
+    <img src="<%= assetPath('images/mockup.png')%>" alt="">
   </div>
   <p id="made-by-me">
     Made with ❤️ by <a href="https://github.com/aakankshabaijal">Aakanksha Baijal</a>
@@ -89,6 +89,8 @@
 
 
 
-<script src="/js/home_likes.js"></script>
-<script src="/js/home_posts_comments.js"></script>
-<script src="/js/home_posts.js"></script>
+<script src="<%= assetPath('js/home_likes.js')%>"></script>
+<script src="<%= assetPath('js/home_posts_comments.js')%>"></script>
+<script src="<%= assetPath('js/home_posts.js')%>"></script>
+
+<!-- todo: gradient.jpg, google-symbol in sass file -->
