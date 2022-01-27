@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/instacode_development');
+const env = require('./environment');
+mongoose.connect(`mongodb://localhost/${env.db_name}`);
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));

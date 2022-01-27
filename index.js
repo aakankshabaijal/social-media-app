@@ -1,4 +1,7 @@
 const express = require('express');
+const env = require('./config/environment');
+const logger = require('morgan');
+
 const app = express();
 const port = 8000; //port 80 is for production/deployment
 const expressLayouts = require('express-ejs-layouts');
@@ -14,6 +17,7 @@ const MongoStore = require('connect-mongo'); //used for storing the session cook
 const sass = require('node-sass');
 const flash = require('connect-flash');
 const flashMiddleware = require('./config/flash-middleware');
+const path = require('path');
 
 /**
  * https://www.youtube.com/watch?v=pGcCWhl6ePQ
@@ -23,7 +27,10 @@ const flashMiddleware = require('./config/flash-middleware');
 app.use(express.urlencoded());
 app.use(cookieParser());
 
-app.use(express.static('./public/')); //use static files
+app.use(express.static(env.asset_path)); //use static files
+
+app.use(logger(env.morgan.mode, env.morgan.options));
+
 app.use(expressLayouts); //use layout for rendering views
 app.use('/uploads', express.static(__dirname + '/uploads')); //make uploads path available to the browser
 
@@ -39,7 +46,7 @@ app.set('views', './views');
 app.use(
 	session({
 		name              : 'instacode',
-		secret            : 'blahsomething', //change the secret before deployment
+		secret            : env.session_cookie_key, //change the secret before deployment
 		saveUninitialized : true,
 		resave            : false,
 		cookie            : {

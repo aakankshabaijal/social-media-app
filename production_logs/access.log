@@ -1,0 +1,2 @@
+::ffff:127.0.0.1 - - [27/Jan/2022:15:33:58 +0000] "GET / HTTP/1.1" 304 - "http://localhost:8000/users/profile/61f2b720cf17f719e36952c3" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:96.0) Gecko/20100101 Firefox/96.0"
+::ffff:127.0.0.1 - - [27/Jan/2022:15:34:28 +0000] "GET /users/profile/61f2b720cf17f719e36952c3 HTTP/1.1" 200 4083 "http://localhost:8000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:96.0) Gecko/20100101 Firefox/96.0"

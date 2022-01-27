@@ -76,8 +76,8 @@ class PostComments {
 			return $(`<li id="comment-${comment._id}">
 					<section class="comment">
 						<img src=${comment.user.avatar} alt=${comment.user.name}>
-						<h6 style="display: inline;"> <b> ${comment.user.name}</b></h6>
-		                ${comment.content}
+						<h6 style="display: inline;"> <b> ${comment.user.name}</b>   ${comment.content}</h6>
+		               
 						<a href="/likes/toggle/?id=${comment._id}&type=Comment" class="like-button" data-likes="0"><i class="far fa-heart"></i>  0</a>
 		                <a class="delete-comment-button" href="/comments/destroy/${comment._id}"><i class="fas fa-trash-alt"></i></a>
 					</section>
@@ -87,8 +87,8 @@ class PostComments {
 			return $(`<li id="comment-${comment._id}">
 					<section class="comment">
 						<i class="fas fa-user"></i>
-						<h6 style="display: inline;"> <b> ${comment.user.name}</b></h6>
-		                ${comment.content}
+						<h6 style="display: inline;"> <b> ${comment.user.name}</b>  ${comment.content}</h6>
+		               
 						<a href="/likes/toggle/?id=${comment._id}&type=Comment" class="like-button" data-likes="0"><i class="far fa-heart"></i>  0</a>
 		                <a class="delete-comment-button" href="/comments/destroy/${comment._id}"><i class="fas fa-trash-alt"></i></a>
 					</section>

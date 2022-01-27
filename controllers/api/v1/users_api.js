@@ -1,5 +1,6 @@
 const User = require('../../../models/user');
 const jwt = require('jsonwebtoken');
+const env = require('../../../config/environment');
 
 /**
  * Whenever a username and password is received from the client,
@@ -17,7 +18,7 @@ const createSession = async (req, res) => {
 			return res.json(200, {
 				message : 'User logged in successfully',
 				data    : {
-					token : jwt.sign(user.toJSON(), 'instacode', { expiresIn: '1h' })
+					token : jwt.sign(user.toJSON(), env.jwt_secret, { expiresIn: '1h' })
 				}
 			});
 		}

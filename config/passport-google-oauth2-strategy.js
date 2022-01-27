@@ -1,17 +1,17 @@
 const passport = require('passport');
 const googleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const crypto = require('crypto');
+const env = require('./environment');
 
 const User = require('../models/user');
 
-//!ADD CLIENT ID AND SECRET BELOW
 // prettier-ignore
 passport.use(
 	new googleStrategy(
 		{
-			clientID     : "632319251961-tcbllehofu2m7cfoukqkqstoi8vi0tb4.apps.googleusercontent.com",
-			clientSecret : "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",
-			callbackURL  : 'http://localhost:8000/users/auth/google/callback'
+			clientID: env.google_client_ID,
+            clientSecret: env.google_client_secret,
+            callbackURL: env.google_callback_URL,
 		},
 		function(accessToken, refreshToken, profile, done) {
 			User.findOne({
