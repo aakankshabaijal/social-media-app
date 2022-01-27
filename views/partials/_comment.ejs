@@ -5,8 +5,8 @@
     <% }else{ %>
     <i class="fas fa-user"></i>
     <% } %>
-    <h6 style="display: inline;"> <b><%=comment.user.name%></b></h6>
-    <%= comment.content %>
+    <h6 style="display: inline;"> <b><%=comment.user.name%></b> <%= comment.content %></h6>
+
     <% let hasUserLikedComment = false %>
     <% for (let like of comment.likes) { %>
     <% if (like.user == locals.user.id) { %>

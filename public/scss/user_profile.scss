@@ -44,3 +44,31 @@ footer {
 	bottom: 0;
 	width: 100%;
 }
+
+@media (max-width: 576px) {
+	.content {
+		section {
+			.profile-pic {
+				width: 25vw;
+				height: 25vw;
+			}
+
+			.user-info {
+				p {
+					font-size: 1em;
+				}
+			}
+		}
+		form {
+			.row {
+				--bs-gutter-x: 0;
+			}
+			.col {
+				padding-left: 0;
+				flex: none;
+				padding-right: 0;
+				margin-bottom: 1em;
+			}
+		}
+	}
+}

@@ -39,4 +39,23 @@ footer {
   width: 100%;
 }
 
+@media (max-width: 576px) {
+  .content section .profile-pic {
+    width: 25vw;
+    height: 25vw;
+  }
+  .content section .user-info p {
+    font-size: 1em;
+  }
+  .content form .row {
+    --bs-gutter-x: 0;
+  }
+  .content form .col {
+    padding-left: 0;
+    flex: none;
+    padding-right: 0;
+    margin-bottom: 1em;
+  }
+}
+
 /*# sourceMappingURL=user_profile.css.map */

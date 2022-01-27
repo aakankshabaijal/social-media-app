@@ -18,14 +18,15 @@
       </p>
     </div>
   </section>
-
+  <br>
   <hr>
 
 
   <!-- if the user is viewing their own profile page, they can edit their profile -->
   <% if (profile_user.id == user.id) { %>
 
-  <h4>Update your Profile</h4>
+  <h5>Update your Profile</h5>
+  <br>
   <form action="/users/update/<%= user.id %>" method="POST" enctype="multipart/form-data">
     <div class="row">
       <div class="col">
@@ -38,9 +39,11 @@
       </div>
     </div>
     <br>
-    <div class="input-group">
-      <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" name="avatar" placeholder="Profile Picture">
-      <input type="submit" value="Update" class="btn btn-outline-light" type="button" id="inputGroupFileAddon04">
+    <div class="row">
+      <div class="input-group">
+        <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" name="avatar" placeholder="Profile Picture">
+        <input type="submit" value="Update" class="btn btn-outline-light" type="button" id="inputGroupFileAddon04">
+      </div>
     </div>
     <% } %>
 

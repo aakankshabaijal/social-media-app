@@ -366,6 +366,11 @@
 							li {
 								height: auto;
 							}
+							.comment {
+								.like-button {
+									flex-shrink: 0;
+								}
+							}
 						}
 					}
 				}
@@ -376,5 +381,3 @@
 		}
 	}
 }
-
-// TODO: Responsive comments in mobile view

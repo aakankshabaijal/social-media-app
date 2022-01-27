@@ -315,6 +315,9 @@
   #home-container #feed-posts #posts-list-container ul li .post-comments li {
     height: auto;
   }
+  #home-container #feed-posts #posts-list-container ul li .post-comments .comment .like-button {
+    flex-shrink: 0;
+  }
   #home-container #user-friends {
     display: none;
   }
