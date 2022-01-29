@@ -61,11 +61,13 @@ gulp.task('images', function(done) {
 
 // empty the public/assets directory
 gulp.task('clean:assets', function(done) {
-	del.sync('./public/assets');
+	del.sync('./public/assets/css');
+	del.sync('./public/assets/js');
+	del.sync('./public/assets/rev-manifest.json');
 	done();
 });
 
-gulp.task('build', gulp.series('clean:assets', 'images', 'js', 'css'), function(done) {
+gulp.task('build', gulp.series('clean:assets', 'js', 'css'), function(done) {
 	console.log('Building assets');
 	done();
 });
