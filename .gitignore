@@ -1,3 +1,2 @@
 /node_modules
-secret.txt
-secret.js
+/config/environment.js
