@@ -1,5 +1,5 @@
 # Instaclip
-A social media website, built and designed entirely from scratch. 
+A full stack social media website, built and designed entirely from scratch. 
 
 [Website](http://instaclip.in.net/)
 
@@ -22,4 +22,11 @@ A social media website, built and designed entirely from scratch.
 - Multer for uploading user's profile picture
 - Gulp for building minified CSS and client-side JS for production environment
 - Deployed on AWS (EC2), using NGINX for reverse proxy
+
+## Screenshots
+
+
+<img width="956" alt="instaclip" src="https://user-images.githubusercontent.com/66862584/170722388-e19ef911-d259-4f5d-8525-427ebfda6bf4.png">
+<img width="960" alt="posts page" src="https://user-images.githubusercontent.com/66862584/170722419-3224bf30-24cb-4d58-a87c-83d73081f5d4.png">
+<img width="960" alt="user profile" src="https://user-images.githubusercontent.com/66862584/170722449-4504dcd3-b7ff-4adb-a3d0-5c464890d590.png">
 
